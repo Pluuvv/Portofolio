@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMouseGlow } from "./hooks/useMouseGlow";
 
@@ -12,14 +12,14 @@ import Footer from "./components/layout/Footer";
 
 // Sections
 import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Experience from "./components/sections/Experience";
-import Projects from "./components/sections/Projects";
-import Gallery from "./components/sections/Gallery";
-import Skills from "./components/sections/Skills";
-import Stats from "./components/sections/Stats";
-import Resume from "./components/sections/Resume";
-import Contact from "./components/sections/Contact";
+const About = lazy(() => import("./components/sections/About"));
+const Experience = lazy(() => import("./components/sections/Experience"));
+const Projects = lazy(() => import("./components/sections/Projects"));
+const Gallery = lazy(() => import("./components/sections/Gallery"));
+const Skills = lazy(() => import("./components/sections/Skills"));
+const Stats = lazy(() => import("./components/sections/Stats"));
+const Resume = lazy(() => import("./components/sections/Resume"));
+const Contact = lazy(() => import("./components/sections/Contact"));
 
 // ============================================================
 // LOADING SCREEN
@@ -81,6 +81,40 @@ function LoadingScreen({ onComplete }) {
         {Math.min(Math.round(progress), 100)}%
       </p>
     </motion.div>
+  );
+}
+
+function LazySection({ children }) {
+  const [shouldRender, setShouldRender] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldRender(true);
+      return;
+    }
+
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldRender(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "250px 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      {shouldRender ? <Suspense fallback={null}>{children}</Suspense> : null}
+    </div>
   );
 }
 
@@ -202,14 +236,30 @@ export default function App() {
 
           <main>
             <Hero />
-            <Stats />
-            <About />
-            <Experience />
-            <Projects />
-            <Gallery />
-            <Skills />
-            <Resume />
-            <Contact />
+            <LazySection>
+              <Stats />
+            </LazySection>
+            <LazySection>
+              <About />
+            </LazySection>
+            <LazySection>
+              <Experience />
+            </LazySection>
+            <LazySection>
+              <Projects />
+            </LazySection>
+            <LazySection>
+              <Gallery />
+            </LazySection>
+            <LazySection>
+              <Skills />
+            </LazySection>
+            <LazySection>
+              <Resume />
+            </LazySection>
+            <LazySection>
+              <Contact />
+            </LazySection>
           </main>
 
           <Footer />
