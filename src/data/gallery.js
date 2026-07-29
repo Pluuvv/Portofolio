@@ -13,7 +13,7 @@ export const galleryCategories = [
   { id: "videography", label: "Videography" },
   { id: "graphic", label: "Graphic Design" },
   { id: "motion", label: "Motion & 3D" },
-]
+];
 
 // ============================================================
 // PHOTOGRAPHY
@@ -23,13 +23,12 @@ export const galleryCategories = [
 //       Add proper alt text describing the actual photo subject.
 // ============================================================
 
-export const photoGallery = Array.from({ length: 20 }, (_, i) => ({
+export const photoGallery = Array.from({ length: 8 }, (_, i) => ({
   id: i + 1,
   src: `./assets/photos/${i + 1}.jpg`,
-  // TODO: Replace generic alt text with an actual description of each photo
   alt: `Photography — ${i + 1}`,
   category: "photography",
-}))
+}));
 
 // ============================================================
 // VIDEOGRAPHY
@@ -44,7 +43,8 @@ export const videoGallery = [
     id: 1,
     title: "SATU WAKTU",
     // TODO: Write an accurate description of this video
-    description: "A short film project. Add description of subject, style, and context.",
+    description:
+      "A short film project. Add description of subject, style, and context.",
     // TODO: Add YouTube video ID when available
     youtubeId: null,
     category: "videography",
@@ -55,7 +55,8 @@ export const videoGallery = [
     id: 2,
     title: "Morning In April",
     // TODO: Write an accurate description of this video
-    description: "A lifestyle video. Add description of subject, style, and context.",
+    description:
+      "A lifestyle video. Add description of subject, style, and context.",
     youtubeId: null,
     category: "videography",
     tag: "Lifestyle",
@@ -63,7 +64,8 @@ export const videoGallery = [
   {
     id: 3,
     title: "Spend The Holiday With U",
-    description: "A travel documentation video. Add description of destinations and style.",
+    description:
+      "A travel documentation video. Add description of destinations and style.",
     youtubeId: null,
     category: "videography",
     tag: "Travel",
@@ -71,7 +73,8 @@ export const videoGallery = [
   {
     id: 4,
     title: "Engagement — Adnan & Intan",
-    description: "Event videography for an engagement ceremony. Add details about the coverage style.",
+    description:
+      "Event videography for an engagement ceremony. Add details about the coverage style.",
     youtubeId: null,
     category: "videography",
     tag: "Event",
@@ -79,7 +82,8 @@ export const videoGallery = [
   {
     id: 5,
     title: "Trip Promotion",
-    description: "Promotional video for travel services. Add details about the client and deliverable.",
+    description:
+      "Promotional video for travel services. Add details about the client and deliverable.",
     youtubeId: null,
     category: "videography",
     tag: "Promotional",
@@ -87,12 +91,13 @@ export const videoGallery = [
   {
     id: 6,
     title: "FIK FAIR — Teaser",
-    description: "Teaser video for the Faculty of Computer Science annual fair event.",
+    description:
+      "Teaser video for the Faculty of Computer Science annual fair event.",
     youtubeId: null,
     category: "videography",
     tag: "Event Teaser",
   },
-]
+];
 
 // ============================================================
 // GRAPHIC DESIGN
@@ -108,7 +113,8 @@ export const graphicGallery = [
     title: "BEMFIK Open Recruitment",
     // TODO: Add image path — public/assets/graphic/bemfik-oprec.jpg
     image: null,
-    description: "Poster design for open recruitment campaign. Add context about the brief, tools used, and output format.",
+    description:
+      "Poster design for open recruitment campaign. Add context about the brief, tools used, and output format.",
     category: "graphic",
     tag: "Poster",
     color: "#3B82F6",
@@ -117,7 +123,8 @@ export const graphicGallery = [
     id: 2,
     title: "PKKMBF IK 2026 — Visual Identity",
     image: null,
-    description: "Brand identity system for orientation week 2026. Add context about deliverables — logo, color palette, typography, templates.",
+    description:
+      "Brand identity system for orientation week 2026. Add context about deliverables — logo, color palette, typography, templates.",
     category: "graphic",
     tag: "Brand Identity",
     color: "#8B5CF6",
@@ -127,7 +134,8 @@ export const graphicGallery = [
     title: "Campaign Poster Series",
     image: null,
     // TODO: Add context about the campaign purpose and target audience
-    description: "A series of campaign posters. Add description of the project context and design approach.",
+    description:
+      "A series of campaign posters. Add description of the project context and design approach.",
     category: "graphic",
     tag: "Campaign",
     color: "#F97316",
@@ -137,7 +145,8 @@ export const graphicGallery = [
     title: "API — Visual Collateral",
     image: null,
     // TODO: Clarify what "API" refers to in this context
-    description: "Visual materials for a technical project or event. Add description of deliverables.",
+    description:
+      "Visual materials for a technical project or event. Add description of deliverables.",
     category: "graphic",
     tag: "Design Collateral",
     color: "#10B981",
@@ -146,12 +155,13 @@ export const graphicGallery = [
     id: 5,
     title: "UKOM SMK — Educational Materials",
     image: null,
-    description: "Visual materials produced for a vocational examination context. Add description of format and output.",
+    description:
+      "Visual materials produced for a vocational examination context. Add description of format and output.",
     category: "graphic",
     tag: "Educational",
     color: "#EC4899",
   },
-]
+];
 
 // ============================================================
 // MOTION & 3D
@@ -165,7 +175,8 @@ export const motionGallery = [
     title: "Logo Animation",
     image: null,
     // TODO: Add context — which organization, what software, what duration
-    description: "Animated logo reveal. Add details about the organization, tools used, and final output.",
+    description:
+      "Animated logo reveal. Add details about the organization, tools used, and final output.",
     category: "motion",
     tag: "Logo Animation",
     color: "#3B82F6",
@@ -175,7 +186,8 @@ export const motionGallery = [
     title: "3D Design Concept",
     image: null,
     // TODO: Add context — what software, what was the brief
-    description: "3D environment or product concept. Add description of tools and design intent.",
+    description:
+      "3D environment or product concept. Add description of tools and design intent.",
     category: "motion",
     tag: "3D",
     color: "#8B5CF6",
@@ -184,9 +196,10 @@ export const motionGallery = [
     id: 3,
     title: "UI Motion — Prototypes",
     image: null,
-    description: "Micro-interaction prototypes for mobile interface design. Add context about the project.",
+    description:
+      "Micro-interaction prototypes for mobile interface design. Add context about the project.",
     category: "motion",
     tag: "UI Animation",
     color: "#F97316",
   },
-]
+];
