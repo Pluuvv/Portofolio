@@ -9,15 +9,15 @@ export default function AnimatedCounter({
   const [count, setCount] = useState(0);
   const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   const frameRef = useRef(null);
+  const endValue = parseFloat(value);
+  const decimalPlaces = Number.isInteger(endValue)
+    ? 0
+    : (String(value).split(".")[1]?.length ?? 0);
 
   useEffect(() => {
     if (!inView) return;
 
     const startTime = performance.now();
-    const endValue = parseFloat(value);
-    const decimalPlaces = Number.isInteger(endValue)
-      ? 0
-      : (String(value).split(".")[1]?.length ?? 0);
 
     const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
