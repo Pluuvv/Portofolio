@@ -8,15 +8,15 @@ export const skillCategories = [
     id: "development",
     label: "Development",
     skills: [
-      { name: "PHP (CodeIgniter 3)", level: "Advanced" },
-      { name: "JavaScript (ES6+)", level: "Advanced" },
-      { name: "HTML5 & CSS3", level: "Advanced" },
-      { name: "SQL / MySQL", level: "Advanced" },
-      { name: "REST API", level: "Advanced" },
-      { name: "MVC Architecture", level: "Advanced" },
-      { name: "OOP", level: "Advanced" },
-      { name: "RBAC", level: "Advanced" },
-      { name: "Git & GitHub", level: "Advanced" },
+      { name: "PHP (CodeIgniter 3)", level: "Intermediate" },
+      { name: "JavaScript (ES6+)", level: "Intermediate" },
+      { name: "HTML5 & CSS3", level: "Intermediate" },
+      { name: "SQL / MySQL", level: "Intermediate" },
+      { name: "REST API", level: "Intermediate" },
+      { name: "MVC Architecture", level: "Intermediate" },
+      { name: "OOP", level: "Intermediate" },
+      { name: "RBAC", level: "Intermediate" },
+      { name: "Git & GitHub", level: "Intermediate" },
       { name: "Kotlin", level: "Beginner" },
       { name: "Java", level: "Beginner" },
       { name: "Android Studio", level: "Beginner" },
@@ -66,7 +66,7 @@ export const skillCategories = [
       { name: "GNS3", level: "Beginner" },
     ],
   },
-]
+];
 
 // ============================================================
 // STATS — Verified from CV (conservative, honest numbers)
@@ -96,4 +96,4 @@ export const stats = [
     suffix: "",
     color: "#EC4899",
   },
-]
+];
