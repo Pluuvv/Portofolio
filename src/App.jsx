@@ -6,6 +6,8 @@ const reduceMotion =
   typeof window !== "undefined" &&
   window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
+const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
 // Layout
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -228,7 +230,7 @@ export default function App() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: reduceMotion ? 0 : 0.8 }}
+          transition={{ duration: reduceMotion ? 0 : isMobile ? 0.3 : 0.8 }}
           className="relative"
           style={{ background: "#050505" }}
         >

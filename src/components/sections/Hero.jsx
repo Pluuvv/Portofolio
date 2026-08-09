@@ -252,7 +252,7 @@ export default function Hero() {
               <img
                 src="./assets/hero-portrait.png"
                 alt="Yanuar Arifin Ilham"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
