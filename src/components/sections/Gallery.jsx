@@ -314,7 +314,9 @@ export default function Gallery() {
           className="flex flex-col gap-4 mb-12"
         >
           <span className="section-subtitle">Creative Work</span>
-          <h2 className="section-title font-display">Gallery</h2>
+          <h2 className="section-title font-display">
+            Gallery & <span className="text-gradient-blue">Showcase</span>
+          </h2>
           <p className="text-white/50 text-lg max-w-xl leading-relaxed">
             Photography, video production, graphic design, and motion work.
           </p>

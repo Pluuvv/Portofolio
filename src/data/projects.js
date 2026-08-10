@@ -26,7 +26,7 @@ export const projects = [
     role: "Android Developer & UI/UX Designer",
     github: null,
     demo: null,
-    caseStudy: null,
+    caseStudy: "D:/Portofolio/Project/Dine In Terminal (Mobile Resto App)/UAS_PAB_K3_107_112_123_124_129.pdf",
     featured: true,
     size: "large",
     category: "Mobile App",
