@@ -168,10 +168,15 @@ function CreativeItem({ item, index }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="group rounded-2xl overflow-hidden"
+      className="group rounded-2xl overflow-hidden cursor-pointer"
       style={{
         background: "rgba(255,255,255,0.022)",
         border: "1px solid rgba(255,255,255,0.08)",
+      }}
+      onClick={() => {
+        if (item.youtubeId) {
+          window.open(`https://www.youtube.com/watch?v=${item.youtubeId}`, "_blank");
+        }
       }}
     >
       {/* Preview area */}
@@ -179,12 +184,34 @@ function CreativeItem({ item, index }) {
         className="relative flex items-end p-4"
         style={{
           height: "140px",
-          background: item.image
+          background: item.youtubeId
+            ? "transparent"
+            : item.image
             ? `url(${item.image}) center/cover`
             : `linear-gradient(160deg, ${item.color}10 0%, ${item.color}04 100%)`,
           borderBottom: "1px solid rgba(255,255,255,0.06)",
+          overflow: "hidden",
         }}
       >
+        {/* YouTube thumbnail if available */}
+        {item.youtubeId && (
+          <img
+            src={`https://img.youtube.com/vi/${item.youtubeId}/mqdefault.jpg`}
+            alt={item.title}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+        {/* Play icon if YouTube */}
+        {item.youtubeId && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center"
+              style={{ background: "rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.2)" }}>
+              <Play size={16} className="text-white ml-0.5" fill="white" />
+            </div>
+          </div>
+        )}
         {/* Tag */}
         <span
           className="text-xs font-semibold px-2.5 py-1 rounded-lg relative z-10"
@@ -205,8 +232,7 @@ function CreativeItem({ item, index }) {
         <p className="text-sm text-white/45 leading-relaxed">
           {item.description}
         </p>
-        {/* TODO: Add image preview path in gallery.js */}
-        {!item.image && (
+        {!item.image && !item.youtubeId && (
           <p className="text-xs text-white/22 mt-3 italic">
             Preview image not yet added
           </p>
@@ -215,6 +241,7 @@ function CreativeItem({ item, index }) {
     </motion.div>
   );
 }
+
 
 // ============================================================
 // GALLERY SECTION

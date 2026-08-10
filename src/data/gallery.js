@@ -1,26 +1,16 @@
 // ============================================================
 // DATA: gallery.js
 // ============================================================
-// CONTENT UPDATE REQUIRED
-// Photography: Numbered images are copied from your Foto/ folder.
-//   Review and remove any photos not suitable for a professional portfolio.
-// Videography: Add YouTube video IDs for each video.
-// Graphic Design: Replace placeholder descriptions with accurate project info.
-// Motion: Add real items or remove section if not yet portfolio-ready.
 
 export const galleryCategories = [
   { id: "photography", label: "Photography" },
   { id: "videography", label: "Videography" },
-  { id: "graphic", label: "Graphic Design" },
-  { id: "motion", label: "Motion & 3D" },
+  { id: "graphic",     label: "Graphic Design" },
+  { id: "motion",      label: "Motion & 3D" },
 ];
 
 // ============================================================
-// PHOTOGRAPHY
-// Photos are sourced from public/assets/photos/
-// TODO: Review all 20 photos and remove any that are not
-//       representative of professional or portfolio-quality work.
-//       Add proper alt text describing the actual photo subject.
+// PHOTOGRAPHY — public/assets/photos/1.jpg … 8.jpg
 // ============================================================
 
 const base = import.meta.env.BASE_URL;
@@ -34,99 +24,94 @@ export const photoGallery = Array.from({ length: 8 }, (_, i) => ({
 
 // ============================================================
 // VIDEOGRAPHY
-// TODO: For each video, add:
-//   - youtubeId: the YouTube video ID (e.g., "dQw4w9WgXcQ")
-//   - A short accurate description of the video
-// Leave youtubeId as null if not yet uploaded to YouTube.
 // ============================================================
 
 export const videoGallery = [
   {
     id: 1,
-    title: "SATU WAKTU",
-    // TODO: Write an accurate description of this video
-    description:
-      "A short film project. Add description of subject, style, and context.",
-    // TODO: Add YouTube video ID when available
-    youtubeId: null,
+    title: "COBRA 2026 Vol. 1 — Full Film",
+    description: "Full documentary film for COBRA (Computer Celebrate Graduation) 2026 — graduation celebration event from the Faculty of Computer Science UPNVJ.",
+    youtubeId: "waKMJYuEc6w",
     category: "videography",
-    // TODO: Confirm the correct genre/tag for this video
-    tag: "Short Film",
+    tag: "Event Film",
   },
   {
     id: 2,
-    title: "Morning In April",
-    // TODO: Write an accurate description of this video
-    description:
-      "A lifestyle video. Add description of subject, style, and context.",
-    youtubeId: null,
+    title: "COBRA 2026 Vol. 2 — Highlights",
+    description: "Highlight reel and second volume of the COBRA 2026 graduation event coverage for FIK UPNVJ.",
+    youtubeId: "CXW5OX2JlfY",
     category: "videography",
-    tag: "Lifestyle",
+    tag: "Event Highlights",
   },
   {
     id: 3,
-    title: "Spend The Holiday With U",
-    description:
-      "A travel documentation video. Add description of destinations and style.",
-    youtubeId: null,
+    title: "Company Profile — BEM FIK 2025",
+    description: "Official company profile for BEM FIK UPNVJ 2025, Kabinet Akasha Vartha. Showcases the cabinet's vision, programs, and team.",
+    youtubeId: "No-Y1BNCi4M",
     category: "videography",
-    tag: "Travel",
+    tag: "Company Profile",
   },
   {
     id: 4,
+    title: "Teaser — FIK FAIR 2026",
+    description: "Official teaser video for FIK FAIR 2026, the annual festival of the Faculty of Computer Science UPNVJ.",
+    youtubeId: "ysQ3671bzPU",
+    category: "videography",
+    tag: "Event Teaser",
+  },
+  {
+    id: 5,
     title: "Engagement — Adnan & Intan",
-    description:
-      "Event videography for an engagement ceremony. Add details about the coverage style.",
-    youtubeId: null,
+    description: "Cinematic engagement ceremony coverage. Capturing intimate moments and celebration in a warm, documentary style.",
+    youtubeId: "NkmBjXSNmVc",
     category: "videography",
     tag: "Event",
   },
   {
-    id: 5,
-    title: "Trip Promotion",
-    description:
-      "Promotional video for travel services. Add details about the client and deliverable.",
-    youtubeId: null,
+    id: 6,
+    title: "Video LENTERA — MKWK UPNVJ",
+    description: "Documentary for Kelompok 1 HABIBIE: 'Habibie: Cendekiawan, Pemimpin dan Arsitek Demokrasi Indonesia' — LENTERA MKWK UPNVJ program.",
+    youtubeId: "8w3pXi424Zw",
     category: "videography",
-    tag: "Promotional",
+    tag: "Documentary",
   },
   {
-    id: 6,
-    title: "FIK FAIR — Teaser",
-    description:
-      "Teaser video for the Faculty of Computer Science annual fair event.",
-    youtubeId: null,
+    id: 7,
+    title: "Spend The Holiday With U",
+    description: "A cinematic short capturing holiday moments. Shot in a warm, personal travel style.",
+    youtubeId: "IlgIqtVdHxE",
     category: "videography",
-    tag: "Event Teaser",
+    tag: "Short Film",
+  },
+  {
+    id: 8,
+    title: "Morning In April",
+    description: "A slow-paced aesthetic short film capturing the quiet mood of an April morning. Personal creative project.",
+    youtubeId: "ytY0Vd1qhDA",
+    category: "videography",
+    tag: "Short Film",
   },
 ];
 
 // ============================================================
 // GRAPHIC DESIGN
-// TODO: For each item:
-//   - Add an actual image path if a JPG/PNG preview exists
-//   - Write accurate project context and deliverables
-//   - Remove items that are not yet portfolio-ready
 // ============================================================
 
 export const graphicGallery = [
   {
     id: 1,
     title: "BEMFIK Open Recruitment",
-    // TODO: Add image path — public/assets/graphic/bemfik-oprec.jpg
     image: null,
-    description:
-      "Poster design for open recruitment campaign. Add context about the brief, tools used, and output format.",
+    description: "Poster design for open recruitment campaign for BEM FIK UPNVJ.",
     category: "graphic",
     tag: "Poster",
     color: "#3B82F6",
   },
   {
     id: 2,
-    title: "PKKMBF IK 2026 — Visual Identity",
+    title: "PKKMB FIK 2026 — Visual Identity",
     image: null,
-    description:
-      "Brand identity system for orientation week 2026. Add context about deliverables — logo, color palette, typography, templates.",
+    description: "Brand identity system for orientation week 2026. Deliverables include logo, color palette, typography, and templates.",
     category: "graphic",
     tag: "Brand Identity",
     color: "#8B5CF6",
@@ -135,9 +120,7 @@ export const graphicGallery = [
     id: 3,
     title: "Campaign Poster Series",
     image: null,
-    // TODO: Add context about the campaign purpose and target audience
-    description:
-      "A series of campaign posters. Add description of the project context and design approach.",
+    description: "A series of campaign posters for various faculty events and initiatives.",
     category: "graphic",
     tag: "Campaign",
     color: "#F97316",
@@ -146,9 +129,7 @@ export const graphicGallery = [
     id: 4,
     title: "API — Visual Collateral",
     image: null,
-    // TODO: Clarify what "API" refers to in this context
-    description:
-      "Visual materials for a technical project or event. Add description of deliverables.",
+    description: "Visual materials for a technical project or event.",
     category: "graphic",
     tag: "Design Collateral",
     color: "#10B981",
@@ -157,8 +138,7 @@ export const graphicGallery = [
     id: 5,
     title: "UKOM SMK — Educational Materials",
     image: null,
-    description:
-      "Visual materials produced for a vocational examination context. Add description of format and output.",
+    description: "Visual materials produced for a vocational examination context.",
     category: "graphic",
     tag: "Educational",
     color: "#EC4899",
@@ -167,39 +147,35 @@ export const graphicGallery = [
 
 // ============================================================
 // MOTION & 3D
-// TODO: Add real motion/3D work with accurate descriptions.
-//       If this section is not ready, remove it from galleryCategories.
 // ============================================================
 
 export const motionGallery = [
   {
     id: 1,
+    title: "Twibbon PKKMB FIK 2025",
+    image: null,
+    description: "Motion graphic twibbon frame for PKKMB FIK UPNVJ 2025. Animated overlay designed for social media sharing.",
+    youtubeId: "MRjkXiYi1Xc",
+    category: "motion",
+    tag: "Motion Graphic",
+    color: "#8B5CF6",
+  },
+  {
+    id: 2,
     title: "Logo Animation",
     image: null,
-    // TODO: Add context — which organization, what software, what duration
-    description:
-      "Animated logo reveal. Add details about the organization, tools used, and final output.",
+    description: "Animated logo reveal. Add details about the organization, tools used, and final output.",
+    youtubeId: null,
     category: "motion",
     tag: "Logo Animation",
     color: "#3B82F6",
   },
   {
-    id: 2,
-    title: "3D Design Concept",
-    image: null,
-    // TODO: Add context — what software, what was the brief
-    description:
-      "3D environment or product concept. Add description of tools and design intent.",
-    category: "motion",
-    tag: "3D",
-    color: "#8B5CF6",
-  },
-  {
     id: 3,
     title: "UI Motion — Prototypes",
     image: null,
-    description:
-      "Micro-interaction prototypes for mobile interface design. Add context about the project.",
+    description: "Micro-interaction prototypes for mobile interface design.",
+    youtubeId: null,
     category: "motion",
     tag: "UI Animation",
     color: "#F97316",
