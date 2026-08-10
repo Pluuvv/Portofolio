@@ -3,6 +3,7 @@
 // ============================================================
 
 const base = import.meta.env.BASE_URL;
+const p = (path) => `${base}assets/projects/${path}`;
 
 export const projects = [
   {
@@ -10,7 +11,15 @@ export const projects = [
     title: "Dine In Terminal",
     subtitle: "Native Android Self-Service Ordering App",
     description: "Built a fully offline-capable Android restaurant kiosk app using Kotlin and Jetpack Compose. Customers browse menus, build carts, and track orders in real-time without staff assistance — reducing order errors and wait times.",
-    thumbnail: `${base}assets/projects/dine-in-terminal.jpg`,
+    thumbnail: p("dine-in-terminal.jpg"),
+    screenshots: [
+      { src: p("dine/Home-Page.jpg"),        caption: "Home Page" },
+      { src: p("dine/Menu-Mode-Block.jpg"),   caption: "Menu Grid" },
+      { src: p("dine/Keranjang-Page.jpg"),    caption: "Cart" },
+      { src: p("dine/Pesanan-Progress.jpg"),  caption: "Order Tracking" },
+      { src: p("dine/Sign-In.jpg"),           caption: "Authentication" },
+      { src: p("dine/Profile-Page.jpg"),      caption: "Profile" },
+    ],
     color: "#3B82F6",
     accentColor: "blue",
     technologies: ["Kotlin", "Jetpack Compose", "Supabase", "MVVM", "StateFlow", "Coroutines", "BroadcastReceiver"],
@@ -29,7 +38,14 @@ export const projects = [
     title: "Smart Parking UPNVJ",
     subtitle: "IoT Campus Parking System — Architecture & Mobile Prototype",
     description: "As CTO, designed a full IoT parking ecosystem for a university campus where 71.4% of students reported tardiness due to parking congestion. Architected the sensor layer, backend endpoints, and mobile prototype from scratch.",
-    thumbnail: `${base}assets/projects/smart-parking.jpg`,
+    thumbnail: p("smart-parking.jpg"),
+    screenshots: [
+      { src: p("parking/Cover.jpg"),                          caption: "Overview" },
+      { src: p("parking/Mockup-Prototype.jpg"),               caption: "Mobile Prototype" },
+      { src: p("parking/Krisis-Realita-Parkir-Kampus.jpg"),   caption: "Problem Analysis" },
+      { src: p("parking/Solusi-Integrasi-tiga-Lapisan.jpg"),  caption: "3-Layer Solution" },
+      { src: p("parking/Business-Model-Canvas.jpg"),          caption: "Business Model" },
+    ],
     color: "#8B5CF6",
     accentColor: "purple",
     technologies: ["Figma", "IoT Architecture", "Ultrasonic Sensors", "System Analysis", "Business Model Canvas", "Firebase"],
@@ -48,7 +64,15 @@ export const projects = [
     title: "SocialAct Platform",
     subtitle: "Environmental Social Action & Financial Transparency Web Platform",
     description: "Designed and built a full-stack social impact platform that brings radical financial transparency to NGO operations. Features live donation tracking, a public GIS waste-reporting map, and a multi-role admin system — all built to rebuild public trust in charitable organizations.",
-    thumbnail: `${base}assets/projects/socialact-platform.jpg`,
+    thumbnail: p("socialact-platform.jpg"),
+    screenshots: [
+      { src: p("socialact/Dashboard-Admin.jpg"),        caption: "Admin Dashboard" },
+      { src: p("socialact/Volunteer.jpg"),               caption: "Volunteer Events" },
+      { src: p("socialact/Lapor-Pengaduan-1.jpg"),       caption: "Waste Report Map" },
+      { src: p("socialact/Transparansi-Keuangan.jpg"),   caption: "Financial Transparency" },
+      { src: p("socialact/Keungan.jpg"),                 caption: "Finance Admin" },
+      { src: p("socialact/Form-Donasi.jpg"),             caption: "Donation Form" },
+    ],
     color: "#10B981",
     accentColor: "blue",
     technologies: ["PHP", "CodeIgniter 3", "MySQL", "Leaflet.js", "Chart.js", "Tailwind CSS", "RBAC"],
@@ -67,7 +91,15 @@ export const projects = [
     title: "Restaurant POS System",
     subtitle: "Full-Stack Multi-Role Point of Sale Web Application",
     description: "Built a complete web-based POS system from scratch using CodeIgniter 3. Handles the full order lifecycle — from menu browsing to payment — across three distinct user roles with strict session-based access control and ACID-compliant stock management.",
-    thumbnail: `${base}assets/projects/resto-pos.jpg`,
+    thumbnail: p("resto-pos.jpg"),
+    screenshots: [
+      { src: p("pos/screen-1.jpg"), caption: "Dashboard" },
+      { src: p("pos/screen-2.jpg"), caption: "Menu Management" },
+      { src: p("pos/screen-3.jpg"), caption: "Order View" },
+      { src: p("pos/screen-4.jpg"), caption: "Cashier Interface" },
+      { src: p("pos/screen-5.jpg"), caption: "Reports" },
+      { src: p("pos/screen-6.jpg"), caption: "Settings" },
+    ],
     color: "#F97316",
     accentColor: "orange",
     technologies: ["PHP", "CodeIgniter 3", "MySQL", "bcrypt", "MVC", "REST API", "Session Auth"],
