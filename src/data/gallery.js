@@ -152,6 +152,12 @@ export const graphicGallery = [
 export const motionGallery = [
   {
     id: 1,
+    title: "After Effect Project: Instagram Story",
+    youtubeId: "qXlvbf6Vkdo",
+    tags: ["Motion Graphic", "After Effects"],
+  },
+  {
+    id: 2,
     title: "Twibbon PKKMB FIK 2025",
     image: null,
     description: "Motion graphic twibbon frame for PKKMB FIK UPNVJ 2025. Animated overlay designed for social media sharing.",

@@ -282,14 +282,8 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-          <div className="lg:col-span-2">
-            <ProjectCard project={projects[0]} index={0} large />
-          </div>
-          <div>
-            <ProjectCard project={projects[1]} index={1} />
-          </div>
-          {projects.slice(2).map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i + 2} />
+          {projects.map((project, i) => (
+            <ProjectCard key={project.id} project={project} index={i} large={i === 0} />
           ))}
         </div>
       </div>
