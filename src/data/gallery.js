@@ -23,9 +23,11 @@ export const galleryCategories = [
 //       Add proper alt text describing the actual photo subject.
 // ============================================================
 
+const base = import.meta.env.BASE_URL;
+
 export const photoGallery = Array.from({ length: 8 }, (_, i) => ({
   id: i + 1,
-  src: `./assets/photos/${i + 1}.jpg`,
+  src: `${base}assets/photos/${i + 1}.jpg`,
   alt: `Photography — ${i + 1}`,
   category: "photography",
 }));
