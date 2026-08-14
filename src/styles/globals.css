@@ -32,46 +32,9 @@ body {
   color: #ffffff;
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
-  cursor: none;
 }
 
-/* ============================================
-   CUSTOM CURSOR
-   ============================================ */
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
-  mix-blend-mode: difference;
-}
 
-.cursor-ring {
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
-}
-
-.cursor-ring.hovering {
-  width: 60px;
-  height: 60px;
-  border-color: rgba(59, 130, 246, 0.8);
-}
 
 /* ============================================
    SCROLLBAR
@@ -351,11 +314,5 @@ body {
 @media (max-width: 768px) {
   .section-padding {
     padding: 80px 0;
-  }
-  body {
-    cursor: auto;
-  }
-  .cursor-dot, .cursor-ring {
-    display: none;
   }
 }

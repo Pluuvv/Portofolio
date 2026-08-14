@@ -24,64 +24,131 @@ const Resume = lazy(() => import("./components/sections/Resume"));
 const Contact = lazy(() => import("./components/sections/Contact"));
 
 // ============================================================
-// LOADING SCREEN
+// SPLASH SCREEN — cinematic version
 // ============================================================
 function LoadingScreen({ onComplete }) {
-  const [progress, setProgress] = useState(0);
+  const [phase, setPhase] = useState(0);
+  // phase 0 → line draws in
+  // phase 1 → name reveals letter by letter
+  // phase 2 → subtitle fades
+  // phase 3 → exit wipe
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          clearInterval(interval);
-          setTimeout(onComplete, 400);
-          return 100;
-        }
-        return p + Math.random() * 18 + 5;
-      });
-    }, 80);
-    return () => clearInterval(interval);
+    const t1 = setTimeout(() => setPhase(1), 600);
+    const t2 = setTimeout(() => setPhase(2), 1500);
+    const t3 = setTimeout(() => setPhase(3), 2400);
+    const t4 = setTimeout(onComplete, 3000);
+    return () => [t1, t2, t3, t4].forEach(clearTimeout);
   }, [onComplete]);
+
+  const name = "Yanuar Arifin Ilham";
+  const letters = name.split("");
 
   return (
     <motion.div
-      className="fixed inset-0 z-[200] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-hidden"
       style={{ background: "#050505" }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
     >
-      {/* Logo */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-        className="flex flex-col items-center gap-6 mb-12"
-      >
-        <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center">
-          <span className="text-3xl font-black text-black font-display">Y</span>
-        </div>
-        <div className="text-center">
-          <h1 className="font-display font-black text-2xl tracking-tight">
-            Yanuar Arifin Ilham
-          </h1>
-          <p className="text-sm text-white/40 mt-1">Portfolio · 2026</p>
-        </div>
-      </motion.div>
+      {/* Background subtle grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
 
-      {/* Progress bar */}
-      <div className="w-48 h-px bg-white/10 rounded-full overflow-hidden">
+      {/* Center content */}
+      <div className="relative flex flex-col items-center gap-8">
+
+        {/* Top accent line */}
         <motion.div
-          className="h-full rounded-full"
-          style={{
-            width: `${Math.min(progress, 100)}%`,
-            background: "linear-gradient(90deg, #3B82F6, #8B5CF6, #F97316)",
-          }}
-          transition={{ duration: 0.1 }}
+          className="h-px rounded-full"
+          style={{ background: "linear-gradient(90deg, transparent, #3B82F6, #8B5CF6, transparent)" }}
+          initial={{ width: 0, opacity: 0 }}
+          animate={phase >= 0 ? { width: 160, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+        />
+
+        {/* Name — letter by letter reveal */}
+        <div className="overflow-hidden">
+          <div className="flex items-center">
+            {letters.map((char, i) => (
+              <motion.span
+                key={i}
+                className="font-display font-black text-white"
+                style={{
+                  fontSize: "clamp(1.6rem, 4vw, 2.8rem)",
+                  letterSpacing: char === " " ? "0.25em" : "-0.02em",
+                  display: "inline-block",
+                  whiteSpace: "pre",
+                }}
+                initial={{ y: 60, opacity: 0, rotateX: -40 }}
+                animate={phase >= 1 ? { y: 0, opacity: 1, rotateX: 0 } : {}}
+                transition={{
+                  duration: 0.55,
+                  delay: i * 0.035,
+                  ease: [0.34, 1.56, 0.64, 1],
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+
+        {/* Subtitle */}
+        <motion.div
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, y: 10 }}
+          animate={phase >= 2 ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <div className="w-4 h-px bg-white/30" />
+          <span className="text-xs font-semibold text-white/40 tracking-[0.25em] uppercase">
+            Portfolio · 2026
+          </span>
+          <div className="w-4 h-px bg-white/30" />
+        </motion.div>
+
+        {/* Bottom accent line */}
+        <motion.div
+          className="h-px rounded-full"
+          style={{ background: "linear-gradient(90deg, transparent, #F97316, #8B5CF6, transparent)" }}
+          initial={{ width: 0, opacity: 0 }}
+          animate={phase >= 2 ? { width: 80, opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         />
       </div>
-      <p className="text-xs text-white/25 mt-4 font-medium tabular-nums">
-        {Math.min(Math.round(progress), 100)}%
-      </p>
+
+      {/* Corner labels — like a film slate */}
+      <motion.div
+        className="absolute top-8 left-8 text-[10px] text-white/15 font-mono tracking-widest"
+        initial={{ opacity: 0 }}
+        animate={phase >= 2 ? { opacity: 1 } : {}}
+        transition={{ duration: 0.4 }}
+      >
+        YAI · 2026
+      </motion.div>
+      <motion.div
+        className="absolute top-8 right-8 text-[10px] text-white/15 font-mono tracking-widest"
+        initial={{ opacity: 0 }}
+        animate={phase >= 2 ? { opacity: 1 } : {}}
+        transition={{ duration: 0.4 }}
+      >
+        PORTFOLIO
+      </motion.div>
+      <motion.div
+        className="absolute bottom-8 left-8 text-[10px] text-white/15 font-mono tracking-widest"
+        initial={{ opacity: 0 }}
+        animate={phase >= 2 ? { opacity: 1 } : {}}
+        transition={{ duration: 0.4 }}
+      >
+        JAKARTA · ID
+      </motion.div>
     </motion.div>
   );
 }
@@ -121,88 +188,7 @@ function LazySection({ children }) {
 }
 
 // ============================================================
-// CURSOR
-// ============================================================
-function CustomCursor({ mousePos }) {
-  const [hovering, setHovering] = useState(false);
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
-  const dotTarget = useRef({ x: mousePos.x, y: mousePos.y });
-  const ringTarget = useRef({ x: mousePos.x, y: mousePos.y });
-  const dotCurrent = useRef({ x: mousePos.x, y: mousePos.y });
-  const ringCurrent = useRef({ x: mousePos.x, y: mousePos.y });
-  const rafRef = useRef(null);
-
-  useEffect(() => {
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    const handleMove = (e) => {
-      dotTarget.current = { x: e.clientX, y: e.clientY };
-      ringTarget.current = { x: e.clientX, y: e.clientY };
-    };
-    const handleEnter = () => setHovering(true);
-    const handleLeave = () => setHovering(false);
-
-    document.addEventListener("mousemove", handleMove, { passive: true });
-    document.querySelectorAll("a, button, [data-cursor]").forEach((el) => {
-      el.addEventListener("mouseenter", handleEnter);
-      el.addEventListener("mouseleave", handleLeave);
-    });
-
-    const animate = () => {
-      dotCurrent.current.x = lerp(
-        dotCurrent.current.x,
-        dotTarget.current.x,
-        0.9,
-      );
-      dotCurrent.current.y = lerp(
-        dotCurrent.current.y,
-        dotTarget.current.y,
-        0.9,
-      );
-      ringCurrent.current.x = lerp(
-        ringCurrent.current.x,
-        ringTarget.current.x,
-        0.12,
-      );
-      ringCurrent.current.y = lerp(
-        ringCurrent.current.y,
-        ringTarget.current.y,
-        0.12,
-      );
-
-      if (dotRef.current) {
-        dotRef.current.style.left = `${dotCurrent.current.x}px`;
-        dotRef.current.style.top = `${dotCurrent.current.y}px`;
-      }
-      if (ringRef.current) {
-        ringRef.current.style.left = `${ringCurrent.current.x}px`;
-        ringRef.current.style.top = `${ringCurrent.current.y}px`;
-      }
-
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMove);
-      cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
-
-  return (
-    <>
-      <div ref={dotRef} className="cursor-dot" />
-      <div
-        ref={ringRef}
-        className={`cursor-ring ${hovering ? "hovering" : ""}`}
-      />
-    </>
-  );
-}
-
-// ============================================================
-// MAIN APP
+// MAIN APP — custom cursor removed
 // ============================================================
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -210,17 +196,14 @@ export default function App() {
 
   return (
     <>
-      {/* Custom Cursor — desktop only */}
-      <CustomCursor mousePos={mousePos} />
-
-      {/* Mouse glow follow */}
+      {/* Mouse glow follow — kept, subtle, non-intrusive */}
       <div
         className="mouse-glow"
         style={{ left: mousePos.x, top: mousePos.y }}
         aria-hidden="true"
       />
 
-      {/* Loading Screen */}
+      {/* Splash Screen */}
       <AnimatePresence>
         {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       </AnimatePresence>
